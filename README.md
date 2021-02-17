@@ -65,7 +65,7 @@ public function payView()
     {
         return LaravelRazorpayFacade::payment($request)
             ->capture()
-            ->redirectToRouteName('paywithrazorpay');
+            ->redirectToRouteName('payment');
     }
 
 ```
