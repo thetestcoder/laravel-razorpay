@@ -12,9 +12,6 @@ jobs:
                 php: [ 8.0, 7.4 ]
                 laravel: [ 8.*, 7.* ]
                 stability: [ prefer-lowest, prefer-stable ]
-                include:
-                    -   laravel: 8.* | 7.*
-                        testbench: 6.* | 5.*
 
         name: PHP${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
