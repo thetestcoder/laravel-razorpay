@@ -42,8 +42,7 @@ class LaravelRazorpay
         string $name,
         string $description
     ):
-    \Illuminate\Contracts\View\View
-    {
+    \Illuminate\Contracts\View\View {
         $data = [
             'name' => $name,
             'description' => $description,
@@ -91,6 +90,4 @@ class LaravelRazorpay
     {
         return $redirect();
     }
-
-
 }
