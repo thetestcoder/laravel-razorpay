@@ -1,0 +1,60 @@
+{
+    "name": "thetestcoder/laravel-razorpay",
+    "description": "This is simple laravel package structure",
+    "keywords": [
+        "thetestcoder",
+        "laravel-razorpay",
+        "razorpay",
+        "Razorpay payment gateway"
+    ],
+    "homepage": "https://github.com/thetestcoder/laravel-razorpay",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "The Test Coder",
+            "email": "thetestcoder@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/contracts": "^8.0",
+        "razorpay/razorpay": "^2.5"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.17",
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "TheTestCoder\\LaravelRazorpay\\": "src/",
+            "TheTestCoder\\LaravelRazorpay\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TheTestCoder\\LaravelRazorpay\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor\\bin\\phpunit",
+        "phpunit": "vendor/bin/phpunit",
+        "test-coverage": "vendor\\bin\\phpunit --coverage-html test-reports/coverage",
+        "format": "vendor\\bin\\php-cs-fixer fix"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TheTestCoder\\LaravelRazorpay\\LaravelRazorpayServiceProvider"
+            ],
+            "aliases": {
+                "LaravelRazorpay": "TheTestCoder\\LaravelRazorpay\\LaravelRazorpayFacade"
+            }
+        }
+    }
+}

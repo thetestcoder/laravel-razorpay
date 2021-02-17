@@ -1,0 +1,7 @@
+test-reports
+composer.lock
+docs
+vendor
+coverage
+.phpunit.result.cache
+.php_cs.cache
