@@ -44,8 +44,7 @@ class LaravelRazorpay
         string $description,
         array $params = []
     ):
-    \Illuminate\Contracts\View\View
-    {
+    \Illuminate\Contracts\View\View {
         $data = [
             'name' => $name,
             'description' => $description,
