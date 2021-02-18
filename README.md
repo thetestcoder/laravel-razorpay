@@ -36,6 +36,17 @@ RAZORPAY_API_SECRET=your-api-secret
     "Order Value From Test Coder"
     )
      !!}
+     
+  // or
+  
+  {{ \TheTestCoder\LaravelRazorpay\LaravelRazorpayFacade::paymentButton(
+        1000,
+        "Pay 10 Rupees",
+        "The Test Coder",
+        "Order Value From Test Coder"
+        [$id] # extra params for routes
+        )
+    }}
 
 ```
 
@@ -49,6 +60,11 @@ Route::get('pay', 'YourController@payView')->name('pay.view');
 Route::post('payment', 'YourController@payment')->name('payment'); // if you change name('your custom name')
 
 // please add extra .env value ===>  RAZORPAY_PAYMENT_ROUTE_NAME=your-route-name 
+
+// or 
+
+Route::post('payment/{param}', 'YourController@payment')->name('payment');
+
 
 ```
 
@@ -64,8 +80,18 @@ public function payView()
     public function payment(Request $request)
     {
         return LaravelRazorpayFacade::payment($request)
-            ->capture()
-            ->redirectToRouteName('payment');
+                        ->capture()
+                        ->redirectToRouteName('payment');
+    }
+    
+    # also can do like this
+    public function payment(Request $request)
+    {
+        $razorpay = LaravelRazorpayFacade::payment($request)->capture();
+    
+        return $razorpay->redirectIf($razorpay->payment->error_code === null, function () use ($bundle) {
+            return redirect()->back();
+        });
     }
 
 ```
