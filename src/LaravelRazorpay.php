@@ -44,14 +44,13 @@ class LaravelRazorpay
         string $description,
         array $notes = []
     ):
-    \Illuminate\Contracts\View\View
-    {
+    \Illuminate\Contracts\View\View {
         $data = [
             'name' => $name,
             'description' => $description,
             'amount' => $amount,
             'btn_text' => $btn_text,
-            'notes' => $notes
+            'notes' => $notes,
         ];
 
         return View::make(
