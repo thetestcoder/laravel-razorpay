@@ -89,7 +89,7 @@ public function payView()
     {
         $razorpay = LaravelRazorpayFacade::payment($request)->capture();
     
-        return $razorpay->redirectIf($razorpay->payment->error_code === null, function () use ($bundle) {
+        return $razorpay->redirectIf($razorpay->payment->error_code === null, function () {
             return redirect()->back();
         });
     }
