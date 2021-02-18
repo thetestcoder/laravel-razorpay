@@ -5,6 +5,7 @@
             data-buttontext="{{$btn_text}}"
             data-name="{{$name}}"
             data-description="{{$description}}"
+            data-notes="{{json_encode($notes)}}"
             data-image="{{config('laravel-razorpay.logo_path')}}"
             data-theme.color="{{config('laravel-razorpay.theme_color')}}">
     </script>

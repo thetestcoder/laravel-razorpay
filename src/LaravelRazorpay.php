@@ -34,20 +34,24 @@ class LaravelRazorpay
      * @param string $btn_text
      * @param string $name
      * @param string $description
+     * @param array $notes
      * @return \Illuminate\Contracts\View\View
      */
     public function paymentButton(
         float $amount,
         string $btn_text,
         string $name,
-        string $description
+        string $description,
+        array $notes = []
     ):
-    \Illuminate\Contracts\View\View {
+    \Illuminate\Contracts\View\View
+    {
         $data = [
             'name' => $name,
             'description' => $description,
             'amount' => $amount,
             'btn_text' => $btn_text,
+            'notes' => $notes
         ];
 
         return View::make(
@@ -56,7 +60,11 @@ class LaravelRazorpay
         );
     }
 
-    public function payment(Request $request): LaravelRazorpay
+    /**
+     * @param Request $request
+     * @return $this
+     */
+    public function payment(Request $request): self
     {
         $this->payment = $this
             ->api
@@ -66,7 +74,11 @@ class LaravelRazorpay
         return $this;
     }
 
-    public function capture()
+    /**
+     * @return $this
+     * @throws \Throwable
+     */
+    public function capture(): self
     {
         $this->payment = $this
             ->api
@@ -81,13 +93,43 @@ class LaravelRazorpay
         return $this;
     }
 
+    /**
+     * @param string $routeName
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function redirectToRouteName(string $routeName): \Illuminate\Http\RedirectResponse
     {
         return redirect()->route($routeName);
     }
 
+    /**
+     * @param callable $redirect
+     * @return mixed
+     */
     public function redirectTo(callable $redirect)
     {
         return $redirect();
+    }
+
+    /**
+     * @param bool $expression
+     * @param string $routeName
+     */
+    public function redirectToRouteIf(bool $expression, string $routeName)
+    {
+        if ($expression) {
+            $this->redirectToRouteName($routeName);
+        }
+    }
+
+    /**
+     * @param bool $expression
+     * @param callable $redirect
+     */
+    public function redirectIf(bool $expression, callable $redirect)
+    {
+        if ($expression) {
+            $this->redirectTo($redirect);
+        }
     }
 }
