@@ -44,17 +44,14 @@ class LaravelRazorpay
         string $description,
         array $params = []
     ):
-    \Illuminate\Contracts\View\View {
+    \Illuminate\Contracts\View\View
+    {
         $data = [
             'name' => $name,
             'description' => $description,
             'amount' => $amount,
             'btn_text' => $btn_text,
-<<<<<<< HEAD
             'params' => $params,
-=======
-            'notes' => $notes,
->>>>>>> 42b4200d28c74b5fb517a917f6d15f3acb08e409
         ];
 
         return View::make(
@@ -117,8 +114,9 @@ class LaravelRazorpay
     /**
      * @param bool $expression
      * @param string $routeName
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function redirectToRouteIf(bool $expression, string $routeName)
+    public function redirectToRouteIf(bool $expression, string $routeName): \Illuminate\Http\RedirectResponse
     {
         if ($expression) {
             return $this->redirectToRouteName($routeName);
@@ -128,6 +126,7 @@ class LaravelRazorpay
     /**
      * @param bool $expression
      * @param callable $redirect
+     * @return mixed
      */
     public function redirectIf(bool $expression, callable $redirect)
     {
