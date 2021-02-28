@@ -6,7 +6,11 @@
             data-name="{{$name}}"
             data-description="{{$description}}"
             data-image="{{config('laravel-razorpay.logo_path')}}"
-            data-theme.color="{{config('laravel-razorpay.theme_color')}}">
+            data-theme.color="{{config('laravel-razorpay.theme_color')}}"
+    >
     </script>
     <input type="hidden" name="_token" value="{!!csrf_token()!!}">
 </form>
+<script>
+    document.querySelector(".razorpay-payment-button").className = '{{config('laravel-razorpay.button_class')}}'
+</script>

@@ -30,4 +30,11 @@ return [
      * Payment box theme color
      */
     "theme_color" => env("RAZORPAY_PAYMENT_THEME_COLOR", "#343a40"),
+
+
+    /**
+     * Pay button class
+     */
+    "button_class" => env("RAZORPAY_PAYMENT_BUTTON_CLASSES", "btn btn-success"),
+
 ];
